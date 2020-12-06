@@ -1,4 +1,4 @@
-![Mafeah Logo](theme/screenshot.png?raw=true 'Mafeah Logo')
+<img src="theme/screenshot.png" alt="Mafeah Logo" width="250"/>
 
 # Mafeah WP Theme
 
