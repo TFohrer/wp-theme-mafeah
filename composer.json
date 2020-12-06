@@ -1,0 +1,28 @@
+{
+    "name": "45northventures/jackpine",
+    "type": "wordpress-theme",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tarek Fohrer",
+            "email": "t.fohrer@gmx.de"
+        }
+    ],
+    "require": {
+        "php": "^7.3",
+        "timber/timber": "dev-2.x-term-factories",
+        "wpackio/enqueue": "^2.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mafeah\\": "src/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
