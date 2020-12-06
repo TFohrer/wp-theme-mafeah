@@ -1,6 +1,7 @@
 {
     "name": "tfohrer/mafeah",
     "type": "wordpress-theme",
+    "description": "Custom wordpress theme for mafeah based on Jackpine.",
     "license": "MIT",
     "authors": [
         {

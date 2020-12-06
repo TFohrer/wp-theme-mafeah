@@ -4,8 +4,8 @@
  * The sidebar containing the main widget area
  *
  * @package WordPress
- * @subpackage Jackpine
- * @since Jackpine 0.1.0
+ * @subpackage Mafeah
+ * @since Mafeah 0.0.1
  */
 
 use Timber\Timber;

@@ -9,8 +9,8 @@
  * E.g., it puts together the home page when no home.php file exists.
  *
  * @package WordPress
- * @subpackage Jackpine
- * @since Jackpine 0.1.0
+ * @subpackage Mafeah
+ * @since Mafeah 0.0.1
  */
 
 use Timber\Timber;

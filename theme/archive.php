@@ -4,8 +4,8 @@
  * The template for displaying archive pages
  *
  * @package WordPress
- * @subpackage Jackpine
- * @since Jackpine 0.1.0
+ * @subpackage Mafeah
+ * @since Mafeah 0.0.1
  */
 
 use Timber\Timber;
@@ -14,9 +14,9 @@ $templates = [ 'archive.twig', 'index.twig' ];
 
 $context = Timber::context();
 
-$context['title'] = __( 'Archive', 'jackpine' );
+$context['title'] = __( 'Archive', 'mafeah' );
 
-$titlePartial = __( 'Archive for ', 'jackpine' );
+$titlePartial = __( 'Archive for ', 'mafeah' );
 
 if ( is_day() ) {
     $context['title'] = $titlePartial . get_the_date( 'F j, Y' );

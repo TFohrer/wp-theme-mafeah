@@ -7,8 +7,8 @@
  * We use this to end our output buffer (started in header.php) and render into the template.
  *
  * @package WordPress
- * @subpackage Jackpine
- * @since Jackpine 0.1.0
+ * @subpackage Mafeah
+ * @since Mafeah 0.0.1
  */
 
 use Timber\Timber;

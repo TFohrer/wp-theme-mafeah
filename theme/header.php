@@ -7,8 +7,8 @@
  * We use this to start our output buffer and render into the template in footer.php
  *
  * @package WordPress
- * @subpackage Jackpine
- * @since Jackpine 0.1.0
+ * @subpackage Mafeah
+ * @since Mafeah 0.0.1
  */
 
 ob_start();

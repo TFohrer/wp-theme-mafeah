@@ -3,11 +3,11 @@
 /**
  * Mafeah
  *
- * Based on the Jackpine starter theme.
+ * Based on the Mafeah starter theme.
  *
  * @package WordPress
- * @subpackage Jackpine
- * @since Jackpine 0.1.0
+ * @subpackage Mafeah
+ * @since Mafeah 0.0.1
  */
 
 require_once dirname( __DIR__ ) . '/vendor/autoload.php';
