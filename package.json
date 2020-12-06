@@ -12,7 +12,8 @@
         "archive": "wpackio-scripts build && wpackio-scripts pack",
         "lint": "yarn run lint-js && yarn run lint-css",
         "lint-js": "eslint assets --ext .js,.ts --no-error-on-unmatched-pattern",
-        "lint-css": "stylelint \"assets/**/*.{css,less,sass,scss}\" --allow-empty-input"
+        "lint-css": "stylelint \"assets/**/*.{css,less,sass,scss}\" --allow-empty-input",
+        "storybook": "start-storybook"
     },
     "husky": {
         "hooks": {
@@ -30,6 +31,10 @@
         "@wpackio/entrypoint": "^5.0.0"
     },
     "devDependencies": {
+        "@storybook/addon-controls": "^6.1.10",
+        "@storybook/addon-essentials": "^6.1.10",
+        "@storybook/addon-knobs": "^6.1.10",
+        "@storybook/html": "^6.1.10",
         "@tailwindcss/forms": "^0.2.1",
         "@tailwindcss/typography": "^0.3.1",
         "@wpackio/cli": "^5.0.0",
@@ -42,9 +47,10 @@
         "postcss": "^7.0.35",
         "prettier": "^2.1.2",
         "sass": "^1.27.0",
-        "storybook-twig": "^1.0.4",
         "stylelint": "^13.7.2",
         "stylelint-config-standard": "^20.0.0",
-        "tailwindcss": "npm:@tailwindcss/postcss7-compat"
+        "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.1",
+        "twig": "^1.15.4",
+        "twig-loader": "^0.5.5"
     }
 }
