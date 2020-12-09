@@ -6,7 +6,7 @@ export default {
 }
 
 //import { text } from '@storybook/addon-knobs'
-import template from './index.twig'
+import template from './button.twig'
 
 export const Primary = args => template({ ...args })
 

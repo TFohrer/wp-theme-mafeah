@@ -13,7 +13,8 @@
         "lint": "yarn run lint-js && yarn run lint-css",
         "lint-js": "eslint assets --ext .js,.ts --no-error-on-unmatched-pattern",
         "lint-css": "stylelint \"assets/**/*.{css,less,sass,scss}\" --allow-empty-input",
-        "storybook": "start-storybook"
+        "storybook": "start-storybook",
+        "build:tailwind": "postcss assets/sass/app.scss -o assets/sass/tailwind.scss"
     },
     "husky": {
         "hooks": {

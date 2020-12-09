@@ -11,6 +11,7 @@ Technologies used:
 -   Alpine.js for adding reactivity to your frontend
 -   wpack.io, an awesome tool for asset bundling with Webpack and live reloading with Browsersync (designed specifically for WordPress)
 -   Composer and Yarn for modern dependency management
+-   Storybook
 
 ---
 
