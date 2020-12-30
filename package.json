@@ -14,7 +14,8 @@
         "lint-js": "eslint assets --ext .js,.ts --no-error-on-unmatched-pattern",
         "lint-css": "stylelint \"assets/**/*.{css,less,sass,scss}\" --allow-empty-input",
         "storybook": "start-storybook",
-        "build:tailwind": "postcss assets/sass/app.scss -o assets/sass/tailwind.scss"
+        "build:tailwind": "postcss assets/sass/app.scss -o assets/sass/tailwind.scss",
+        "stylelint-check": "stylelint-config-prettier-check"
     },
     "husky": {
         "hooks": {
@@ -49,7 +50,9 @@
         "prettier": "^2.1.2",
         "sass": "^1.27.0",
         "stylelint": "^13.7.2",
+        "stylelint-config-prettier": "^8.0.2",
         "stylelint-config-standard": "^20.0.0",
+        "stylelint-scss": "^3.18.0",
         "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.1",
         "twig": "^1.15.4",
         "twig-loader": "^0.5.5"

@@ -26,8 +26,9 @@ $font-size-default: 16px;
 html {
     font-size: $font-size-default;
 }
+
 body {
     font-family: $font-family-ubuntu;
-    $font-weight: $font-weight-regular;
+    font-weight: $font-weight-regular;
     font-size: 1rem;
 }
