@@ -14,15 +14,16 @@ module.exports = {
         })
 
         config.module.rules.push({
-            test: /\.scss$/,
+            test: /\.(scss|css)$/,
             use: [
                 'style-loader',
                 'css-loader',
-                'sass-loader',
                 'postcss-loader',
+                'sass-loader',
             ],
-            include: path.resolve(__dirname, '../'),
+            include: path.resolve(__dirname, '../assets'),
         })
+
         return config
     },
 }

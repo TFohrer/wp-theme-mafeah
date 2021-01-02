@@ -1,0 +1,17 @@
+button,
+.button {
+    text-transform: uppercase;
+    @apply py-3 px-6;
+}
+
+.button--primary {
+    background-color: red;
+}
+
+.button--secondary {
+    background-color: green;
+}
+
+.button--outlined {
+    border: 1px solid red;
+}

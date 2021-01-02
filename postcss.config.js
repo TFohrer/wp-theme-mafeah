@@ -2,6 +2,6 @@ module.exports = {
     plugins: [
         require('stylelint'),
         require('tailwindcss'),
-        require('autoprefixer'),
+        process.env.NODE_ENV === 'production' ? require('autoprefixer') : null,
     ],
 }

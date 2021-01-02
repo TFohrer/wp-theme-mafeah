@@ -48,16 +48,18 @@ $webfonts: (
         style: 'italic',
     )
 );
-
-@each $webfont in $webfonts {
-    @font-face {
-        font-family: map-get($webfont, 'family');
-        /* stylelint-disable */
-        src: url('../fonts/#{map-get($webfont, 'file')}.woff2') format('woff2'),
-            url('../fonts/#{map-get($webfont, 'file')}.woff') format('woff');
-        font-weight: #{map-get($webfont, 'weight')};
-        font-style: #{map-get($webfont, 'style')};
-        font-display: swap;
-        /* stylelint-enable */
+@layer base {
+    @each $webfont in $webfonts {
+        @font-face {
+            font-family: map-get($webfont, 'family');
+            /* stylelint-disable */
+            src: url('../fonts/#{map-get($webfont, 'file')}.woff2')
+                    format('woff2'),
+                url('../fonts/#{map-get($webfont, 'file')}.woff') format('woff');
+            font-weight: #{map-get($webfont, 'weight')};
+            font-style: #{map-get($webfont, 'style')};
+            font-display: swap;
+            /* stylelint-enable */
+        }
     }
 }

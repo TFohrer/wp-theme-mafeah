@@ -2,7 +2,19 @@
     "extends": ["stylelint-config-prettier"],
     "plugins": ["stylelint-scss"],
     "rules": {
-        "scss/at-rule-no-unknown": true,
+        "scss/at-rule-no-unknown": [
+            true,
+            {
+                "ignoreAtRules": [
+                    "layer",
+                    "tailwind",
+                    "apply",
+                    "variants",
+                    "responsive",
+                    "screen"
+                ]
+            }
+        ],
         "at-rule-no-unknown": null,
         "scss/dollar-variable-pattern": null,
         "at-rule-empty-line-before": null
