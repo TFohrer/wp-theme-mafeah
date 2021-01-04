@@ -1,11 +1,13 @@
 button,
 .button {
     text-transform: uppercase;
-    @apply py-3 px-6;
+    @apply py-3.5 px-8;
+    font-size: 0.875em;
 }
 
 .button--primary {
-    background-color: red;
+    @apply bg-primary;
+    color: white;
 }
 
 .button--secondary {
@@ -13,5 +15,10 @@ button,
 }
 
 .button--outlined {
-    border: 1px solid red;
+    border: 1px solid;
+    background-color: transparent;
+
+    &.button--primary {
+        @apply border-primary text-primary;
+    }
 }

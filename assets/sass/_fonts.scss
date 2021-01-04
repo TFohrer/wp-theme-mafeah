@@ -48,6 +48,7 @@ $webfonts: (
         style: 'italic',
     )
 );
+
 @layer base {
     @each $webfont in $webfonts {
         @font-face {
