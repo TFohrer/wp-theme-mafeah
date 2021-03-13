@@ -14,6 +14,7 @@
         "lint-js": "eslint assets --ext .js,.ts --no-error-on-unmatched-pattern",
         "lint-css": "stylelint \"assets/**/*.{css,less,sass,scss}\" --allow-empty-input",
         "storybook": "start-storybook",
+        "build:storybook": "build-storybook -o docs-build",
         "build:tailwind": "postcss assets/sass/app.scss -o assets/sass/tailwind.scss",
         "stylelint-check": "stylelint-config-prettier-check"
     },

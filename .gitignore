@@ -17,3 +17,4 @@ vendor
 .eslintcache
 .yarn-integrity
 wpackio.server.js
+docs-build
