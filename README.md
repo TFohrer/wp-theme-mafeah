@@ -16,3 +16,13 @@ Technologies used:
 ---
 
 Special thanks goes to the creators of Jackpine, Timber, Tailwind CSS, Alpine.js, and wpack.io for their awesome work.
+
+## Development
+
+### Storybook
+
+This theme uses storybook to visualize the components used. In order to start it locally run
+
+```
+$ npm run storybook
+```

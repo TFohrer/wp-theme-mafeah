@@ -1,17 +1,25 @@
 button,
 .button {
     text-transform: uppercase;
-    @apply py-3.5 px-8;
+    @apply px-x4 py-x3;
     font-size: 0.875em;
 }
 
 .button--primary {
     @apply bg-primary;
     color: white;
+
+    &:hover,
+    &:focus {
+        background: white;
+        @apply text-primary;
+        border: 1px solid theme('colors.primary.DEFAULT');
+    }
 }
 
 .button--secondary {
-    background-color: green;
+    @apply bg-secondary;
+    color:white;
 }
 
 .button--outlined {
