@@ -2,7 +2,7 @@
 
 # Mafeah WP Theme
 
-This is a custom theme for the mafeah website/shop based on Timber.
+This is a custom theme for the mafeah website/shop.
 
 Technologies used:
 
