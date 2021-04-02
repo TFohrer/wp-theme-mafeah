@@ -1,0 +1,20 @@
+{% set accordionItems = accordionItems|default([]) %}
+<div class="accordion" x-data="accordion()">
+{% for accordionItem in accordionItems %}
+  <div class="accordion-item">
+    <button class="accordion-item__header" x-on:click="toggle" aria-expanded="false"><span class="accordion-item__header-icon"></span>{{accordionItem.title}}</button>
+    <section class="accordion-item__panel" x-show="isOpen()" >{{accordionItem.content}}</section>
+  </div>
+{% endfor %}
+</div>
+
+<script>
+    function accordion() {
+        return {
+            show: false,
+            toggle() { this.show = !this.show },
+            close() { this.show = false },
+            isOpen() { return this.show === true },
+        }
+    }
+</script>

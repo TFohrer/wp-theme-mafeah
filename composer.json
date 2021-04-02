@@ -1,29 +1,33 @@
 {
-    "name": "tfohrer/mafeah",
-    "type": "wordpress-theme",
-    "description": "Custom wordpress theme for mafeah based on Jackpine.",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Tarek Fohrer",
-            "email": "t.fohrer@gmx.de"
-        }
-    ],
-    "require": {
-        "php": "^7.3",
-        "timber/timber": "dev-2.x-term-factories",
-        "wpackio/enqueue": "^2.2"
-    },
-    "autoload": {
-        "psr-4": {
-            "Mafeah\\": "src/"
-        }
-    },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+	"name": "tfohrer/mafeah",
+	"type": "wordpress-theme",
+	"description": "Custom wordpress theme for mafeah using timber.",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Tarek Fohrer",
+			"email": "t.fohrer@gmx.de"
+		}
+	],
+	"require": {
+		"php": "^7.3",
+		"timber/timber": "dev-2.x-term-factories"
+	},
+	"require-dev": {
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+		"squizlabs/php_codesniffer": "^3.5",
+		"wp-coding-standards/wpcs": "^2.3"
+	},
+	"autoload": {
+		"psr-4": {
+			"Mafeah\\": "src/"
+		}
+	},
+	"config": {
+		"optimize-autoloader": true,
+		"preferred-install": "dist",
+		"sort-packages": true
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true
 }
