@@ -3,8 +3,6 @@
 /**
  * Mafeah
  *
- * Based on the Mafeah starter theme.
- *
  * @package WordPress
  * @subpackage Mafeah
  * @since Mafeah 0.0.1

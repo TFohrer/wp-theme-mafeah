@@ -6,155 +6,155 @@ use Timber\Menu;
 use Timber\Site;
 use Timber\Timber;
 use Twig\Environment;
-use WPackio\Enqueue;
 
 /**
  * Class MafeahSite
  *
- * @package WordPress
+ * @package    WordPress
  * @subpackage Mafeah
- * @since Mafeah 0.0.1
+ * @since      Mafeah 0.0.1
  */
 class MafeahSite extends Site {
 
-    protected $manifestFile;
 
-    protected $distPath;
+	protected $manifestFile;
 
-    /**
-     * @var Timber
-     */
-    protected $timberInstance;
+	protected $distPath;
 
-    /**
-     *
-     * @param string $themeName The name of the application in the wpackio.project.js config
-     * @param string $themeVersion The version of the theme
-     * @param string $distPath The path webpack dist folder
-     * @param string|array $templatesPath The path to templates folder
-     */
-    public function __construct( string $themeName, string $themeVersion, string $distPath,  $templatesPath ) {
+	/**
+	 * Timber instance
+	 *
+	 * @var Timber
+	 */
+	protected $timberInstance;
 
-        $manifestStr = file_get_contents(dirname(__FILE__) . '/' . $distPath . '/manifest.json');
-        $this->manifestFile = json_decode($manifestStr, true);
-        $this->distPath = $distPath;
+	/**
+	 *
+	 * @param string       $themeName     The name of the application in the wpackio.project.js config.
+	 * @param string       $themeVersion  The version of the theme.
+	 * @param string       $distPath      The path webpack dist folder.
+	 * @param string|array $templatesPath The path to templates folder.
+	 */
+	public function __construct( string $themeName, string $themeVersion, string $distPath, $templatesPath ) {
 
-        $this->timberInstance = new Timber();
+		$manifest_str       = file_get_contents( dirname( __FILE__ ) . '/' . $distPath . '/manifest.json' );
+		$this->manifestFile = json_decode( $manifestStr, true );
+		$this->distPath     = $distPath;
 
-        Timber::$dirname = $templatesPath;
+		$this->timberInstance = new Timber();
 
-        $this->add_actions();
-        $this->add_filters();
+		Timber::$dirname = $templatesPath;
 
-        parent::__construct();
-    }
+		$this->add_actions();
+		$this->add_filters();
 
-    /**
-     * Register our actions.
-     */
-    public function add_actions() {
-        add_action( 'after_setup_theme', [ $this, 'add_theme_supports' ] );
-        add_action( 'after_setup_theme', [ $this, 'load_text_domain' ] );
-        add_action( 'init', [ $this, 'add_custom_taxonomies' ] );
-        add_action( 'init', [ $this, 'add_custom_post_types' ] );
-        add_action( 'wp_enqueue_scripts', [ $this, 'load_javascript_files' ] );
-    }
+		parent::__construct();
+	}
 
-    /**
-     * Register our filters.
-     */
-    public function add_filters() {
-        add_filter( 'timber/context', [ $this, 'add_to_context' ] );
-        add_filter( 'timber/twig', [ $this, 'add_to_twig' ] );
-    }
+	/**
+	 * Register our actions.
+	 */
+	public function add_actions() {
+		add_action( 'after_setup_theme', array( $this, 'add_theme_supports' ) );
+		add_action( 'after_setup_theme', array( $this, 'load_text_domain' ) );
+		add_action( 'init', array( $this, 'add_custom_taxonomies' ) );
+		add_action( 'init', array( $this, 'add_custom_post_types' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'load_javascript_files' ) );
+	}
 
-    /**
-     * Register custom taxonomies.
-     */
-    public function add_custom_taxonomies() {
-        //
-    }
+	/**
+	 * Register our filters.
+	 */
+	public function add_filters() {
+		add_filter( 'timber/context', array( $this, 'add_to_context' ) );
+		add_filter( 'timber/twig', array( $this, 'add_to_twig' ) );
+	}
 
-    /**
-     * Register custom post types.
-     */
-    public function add_custom_post_types() {
-        //
-    }
+	/**
+	 * Register custom taxonomies.
+	 */
+	public function add_custom_taxonomies() {
+	}
 
-    /**
-     * Register supported theme features.
-     */
-    public function add_theme_supports() {
-        // Enable RSS feeds for posts and comments
-        add_theme_support( 'automatic-feed-links' );
+	/**
+	 * Register custom post types.
+	 */
+	public function add_custom_post_types() {
+	}
 
-        // Let WordPress provide the document title
-        add_theme_support( 'title-tag' );
+	/**
+	 * Register supported theme features.
+	 */
+	public function add_theme_supports() {
+		// Enable RSS feeds for posts and comments.
+		add_theme_support( 'automatic-feed-links' );
 
-        // Enable featured images for posts
-        add_theme_support( 'post-thumbnails' );
+		// Let WordPress provide the document title.
+		add_theme_support( 'title-tag' );
 
-        // Enable HTML5 markup for certain elements
-        add_theme_support(
-            'html5',
-            [
-                'search-form',
-                'comment-form',
-                'comment-list',
-                'gallery',
-                'caption',
-                'style',
-                'script',
-            ]
-        );
+		// Enable featured images for posts.
+		add_theme_support( 'post-thumbnails' );
 
-        // Enable menus
-        add_theme_support( 'menus' );
-    }
+		// Enable HTML5 markup for certain elements.
+		add_theme_support(
+			'html5',
+			array(
+				'search-form',
+				'comment-form',
+				'comment-list',
+				'gallery',
+				'caption',
+				'style',
+				'script',
+			)
+		);
 
-    /**
-     * Add variables to the global Timber context.
-     *
-     * @param array $context The global Timber context
-     *
-     * @return array The modified global Timber context
-     */
-    public function add_to_context( array $context ) {
-        $context['menu'] = new Menu();
-        $context['site'] = $this;
+		// Enable menus.
+		add_theme_support( 'menus' );
+	}
 
-        return $context;
-    }
+	/**
+	 * Add variables to the global Timber context.
+	 *
+	 * @param array $context The global Timber context.
+	 *
+	 * @return array The modified global Timber context
+	 */
+	public function add_to_context( array $context ) {
+		$context['menu'] = new Menu();
+		$context['site'] = $this;
 
-    /**
-     * Add extensions to the Timber Twig environment.
-     *
-     * @param Environment $twig The Timber Twig environment
-     *
-     * @return Environment The modified Timber Twig environment
-     */
-    public function add_to_twig( Environment $twig ) {
-        return $twig;
-    }
+		return $context;
+	}
 
-    /**
-     * Load the theme text domain.
-     */
-    public function load_text_domain() {
-        load_theme_textdomain( 'mafeah',
-            get_template_directory() . '/languages' );
-    }
+	/**
+	 * Add extensions to the Timber Twig environment.
+	 *
+	 * @param Environment $twig The Timber Twig environment.
+	 *
+	 * @return Environment The modified Timber Twig environment
+	 */
+	public function add_to_twig( Environment $twig ) {
+		return $twig;
+	}
 
-    /**
-     * Load wpack.io scripts.
-     */
-    public function load_javascript_files() {
-        $mainJsFileName = $this->manifestFile['main.js'];
+	/**
+	 * Load the theme text domain.
+	 */
+	public function load_text_domain() {
+		load_theme_textdomain(
+			'mafeah',
+			get_template_directory() . '/languages'
+		);
+	}
 
-        wp_register_script('main_js', get_stylesheet_directory_uri() . '/' . $distPath.'/'. $mainJsFileName, [], true, true);
-        wp_enqueue_script('main_js');
+	/**
+	 * Load wpack.io scripts.
+	 */
+	public function load_javascript_files() {
+		$mainJsFileName = $this->manifestFile['main.js'];
 
-        //$this->wpackInstance->enqueue( 'app', 'main', [] );
-    }
+		wp_register_script( 'main_js', get_stylesheet_directory_uri() . '/' . $distPath . '/' . $mainJsFileName, array(), true, true );
+		wp_enqueue_script( 'main_js' );
+	}
 }

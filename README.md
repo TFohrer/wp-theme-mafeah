@@ -30,3 +30,11 @@ This theme uses storybook to visualize the components used. In order to start it
 ```
 $ npm run storybook
 ```
+
+### Coding Standards
+
+Php-CodeSniffer is installed via composer with worpdress coding standards. See list of installed coding standards via:
+
+```
+$ ./vendor/bin/phpcs -i
+```
