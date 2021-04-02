@@ -16,7 +16,6 @@ use Twig\Environment;
  */
 class MafeahSite extends Site {
 
-
 	protected $manifestFile;
 
 	protected $distPath;
@@ -37,7 +36,7 @@ class MafeahSite extends Site {
 	 */
 	public function __construct( string $themeName, string $themeVersion, string $distPath, $templatesPath ) {
 
-		$manifest_str       = file_get_contents( dirname( __FILE__ ) . '/' . $distPath . '/manifest.json' );
+		$manifestStr        = file_get_contents( dirname( __FILE__ ) . '/' . $distPath . '/manifest.json' );
 		$this->manifestFile = json_decode( $manifestStr, true );
 		$this->distPath     = $distPath;
 
@@ -59,6 +58,7 @@ class MafeahSite extends Site {
 		add_action( 'after_setup_theme', array( $this, 'load_text_domain' ) );
 		add_action( 'init', array( $this, 'add_custom_taxonomies' ) );
 		add_action( 'init', array( $this, 'add_custom_post_types' ) );
+    add_action( 'wp_enqueue_scripts', array( $this, 'load_style_files' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_javascript_files' ) );
 	}
 
@@ -148,13 +148,23 @@ class MafeahSite extends Site {
 		);
 	}
 
+  	/**
+	 * Load css files.
+	 */
+	public function load_style_files() {
+		$mainCSSFileName = $this->manifestFile['main.css'];
+    $mainCSSFilePath = get_stylesheet_directory_uri() . '/' . $this->distPath . '/' . $mainCSSFileName;
+
+		wp_enqueue_style( 'main_css', $mainCSSFilePath );
+	}
+
 	/**
-	 * Load wpack.io scripts.
+	 * Load javascript files.
 	 */
 	public function load_javascript_files() {
 		$mainJsFileName = $this->manifestFile['main.js'];
 
-		wp_register_script( 'main_js', get_stylesheet_directory_uri() . '/' . $distPath . '/' . $mainJsFileName, array(), true, true );
+    wp_register_script( 'main_js', get_stylesheet_directory_uri() . '/' . $this->distPath . '/' . $mainJsFileName, null, false, true );
 		wp_enqueue_script( 'main_js' );
 	}
 }

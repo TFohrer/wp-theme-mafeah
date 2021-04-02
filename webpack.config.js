@@ -16,7 +16,7 @@ module.exports = {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, outputPath),
     clean: true,
-    publicPath: outputPath + '/',
+    publicPath: '',
   },
   plugins: [
     new MiniCssExtractPlugin({
