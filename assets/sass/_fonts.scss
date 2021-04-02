@@ -1,89 +1,104 @@
 $webfonts: (
-    (
-        file: 'Ubuntu-Light',
-        family: $font-family-ubuntu,
-        weight: $font-weight-light,
-        style: 'normal',
-    ),
-    (
-        file: 'Ubuntu-LightItalic',
-        family: $font-family-ubuntu,
-        weight: $font-weight-light,
-        style: 'italic',
-    ),
-    (
-        file: 'Ubuntu-Regular',
-        family: $font-family-ubuntu,
-        weight: $font-weight-regular,
-        style: 'normal',
-    ),
-    (
-        file: 'Ubuntu-RegularItalic',
-        family: $font-family-ubuntu,
-        weight: $font-weight-regular,
-        style: 'italic',
-    ),
-    (
-        file: 'Ubuntu-Medium',
-        family: $font-family-ubuntu,
-        weight: $font-weight-medium,
-        style: 'normal',
-    ),
-    (
-        file: 'Ubuntu-MediumItalic',
-        family: $font-family-ubuntu,
-        weight: $font-weight-medium,
-        style: 'italic',
-    ),
-    (
-        file: 'Ubuntu-Bold',
-        family: $font-family-ubuntu,
-        weight: $font-weight-bold,
-        style: 'normal',
-    ),
-    (
-        file: 'Ubuntu-BoldItalic',
-        family: $font-family-ubuntu,
-        weight: $font-weight-bold,
-        style: 'italic',
-    )
+	(
+		file: 'abel/Abel-Regular',
+		family: $font-family-abel,
+		weight: $font-weight-regular,
+		style: 'normal',
+	),
+	(
+		file: 'ubuntu/Ubuntu-Light',
+		family: $font-family-ubuntu,
+		weight: $font-weight-light,
+		style: 'normal',
+	),
+	(
+		file: 'ubuntu/Ubuntu-LightItalic',
+		family: $font-family-ubuntu,
+		weight: $font-weight-light,
+		style: 'italic',
+	),
+	(
+		file: 'ubuntu/Ubuntu-Regular',
+		family: $font-family-ubuntu,
+		weight: $font-weight-regular,
+		style: 'normal',
+	),
+	(
+		file: 'ubuntu/Ubuntu-RegularItalic',
+		family: $font-family-ubuntu,
+		weight: $font-weight-regular,
+		style: 'italic',
+	),
+	(
+		file: 'ubuntu/Ubuntu-Medium',
+		family: $font-family-ubuntu,
+		weight: $font-weight-medium,
+		style: 'normal',
+	),
+	(
+		file: 'ubuntu/Ubuntu-MediumItalic',
+		family: $font-family-ubuntu,
+		weight: $font-weight-medium,
+		style: 'italic',
+	),
+	(
+		file: 'ubuntu/Ubuntu-Bold',
+		family: $font-family-ubuntu,
+		weight: $font-weight-bold,
+		style: 'normal',
+	),
+	(
+		file: 'ubuntu/Ubuntu-BoldItalic',
+		family: $font-family-ubuntu,
+		weight: $font-weight-bold,
+		style: 'italic',
+	)
 );
 
 @layer base {
-    @each $webfont in $webfonts {
-        @font-face {
-            font-family: map-get($webfont, 'family');
-            /* stylelint-disable */
-            src: url('../fonts/#{map-get($webfont, 'file')}.woff2')
-                    format('woff2'),
-                url('../fonts/#{map-get($webfont, 'file')}.woff') format('woff');
-            font-weight: #{map-get($webfont, 'weight')};
-            font-style: #{map-get($webfont, 'style')};
-            font-display: swap;
-            /* stylelint-enable */
-        }
-    }
+	@each $webfont in $webfonts {
+		@font-face {
+			font-family: map-get($webfont, 'family');
+			/* stylelint-disable */
+			src: url('../fonts/#{map-get($webfont, 'file')}.woff2') format('woff2'),
+				url('../fonts/#{map-get($webfont, 'file')}.woff') format('woff');
+			font-weight: #{map-get($webfont, 'weight')};
+			font-style: #{map-get($webfont, 'style')};
+			font-display: swap;
+			/* stylelint-enable */
+		}
+	}
 
-    html {
-        font-size: $font-size-default;
-    }
+	html {
+		font-size: $font-size-default;
+	}
 
-    body {
-        font-family: $font-family-ubuntu;
-        font-weight: $font-weight-regular;
-        font-size: 1rem;
-    }
+	body {
+		font-family: $font-family-ubuntu;
+		font-weight: $font-weight-regular;
+		font-size: 1rem;
+	}
 
-    @layer base {
-        h1 {
-          @apply text-2xl;
-        }
-        h2 {
-          @apply text-xl;
-        }
+	@layer base {
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			font-family: $font-family-abel;
+			font-weight: $font-weight-regular;
+		}
 
-        h3 {
-          @apply text-lg;
-        }
-      }
+		h1 {
+			@apply text-2xl;
+		}
+		h2 {
+			@apply text-xl;
+		}
+
+		h3 {
+			@apply text-lg;
+		}
+	}
 }
