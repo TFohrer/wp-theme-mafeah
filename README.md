@@ -2,14 +2,13 @@
 
 # Mafeah WP Theme
 
-This is a custom theme for the mafeah website/shop based on Jackpine.
+This is a custom theme for the mafeah website/shop based on Timber.
 
 Technologies used:
 
 -   Timber, a library that lets you create WordPress templates using the Twig templating engine
 -   Tailwind CSS
--   Alpine.js
--   wpack.io
+-   webpack v5
 -   Composer and Yarn
 -   Storybook
 
