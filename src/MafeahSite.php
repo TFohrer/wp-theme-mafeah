@@ -16,10 +16,10 @@ use WPackio\Enqueue;
  * @since Mafeah 0.0.1
  */
 class MafeahSite extends Site {
-    /**
-     * @var Enqueue
-     */
-    protected $wpackInstance;
+
+    protected $manifestFile;
+
+    protected $distPath;
 
     /**
      * @var Timber
@@ -30,11 +30,15 @@ class MafeahSite extends Site {
      *
      * @param string $themeName The name of the application in the wpackio.project.js config
      * @param string $themeVersion The version of the theme
-     * @param string $distPath The path to wpack.io dist folder
-     * @param string $templatesPath The path to templates folder
+     * @param string $distPath The path webpack dist folder
+     * @param string|array $templatesPath The path to templates folder
      */
-    public function __construct( string $themeName, string $themeVersion, string $distPath, string $templatesPath ) {
-        $this->wpackInstance  = new Enqueue( $themeName, $distPath, $themeVersion, 'theme', false );
+    public function __construct( string $themeName, string $themeVersion, string $distPath,  $templatesPath ) {
+
+        $manifestStr = file_get_contents(dirname(__FILE__) . '/' . $distPath . '/manifest.json');
+        $this->manifestFile = json_decode($manifestStr, true);
+        $this->distPath = $distPath;
+
         $this->timberInstance = new Timber();
 
         Timber::$dirname = $templatesPath;
@@ -53,7 +57,7 @@ class MafeahSite extends Site {
         add_action( 'after_setup_theme', [ $this, 'load_text_domain' ] );
         add_action( 'init', [ $this, 'add_custom_taxonomies' ] );
         add_action( 'init', [ $this, 'add_custom_post_types' ] );
-        add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_wpack_scripts' ] );
+        add_action( 'wp_enqueue_scripts', [ $this, 'load_javascript_files' ] );
     }
 
     /**
@@ -145,7 +149,12 @@ class MafeahSite extends Site {
     /**
      * Load wpack.io scripts.
      */
-    public function enqueue_wpack_scripts() {
-        $this->wpackInstance->enqueue( 'app', 'main', [] );
+    public function load_javascript_files() {
+        $mainJsFileName = $this->manifestFile['main.js'];
+
+        wp_register_script('main_js', get_stylesheet_directory_uri() . '/' . $distPath.'/'. $mainJsFileName, [], true, true);
+        wp_enqueue_script('main_js');
+
+        //$this->wpackInstance->enqueue( 'app', 'main', [] );
     }
 }

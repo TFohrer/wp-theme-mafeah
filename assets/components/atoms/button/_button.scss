@@ -1,32 +1,32 @@
 button,
 .button {
-    text-transform: uppercase;
-    @apply px-x4 py-x3;
-    font-size: 0.875em;
+  text-transform: uppercase;
+  @apply px-x4 py-x3;
+  font-size: 0.875em;
 }
 
 .button--primary {
-    @apply bg-primary;
-    color: white;
+  @apply bg-primary;
+  color: white;
 
-    &:hover,
-    &:focus {
-        background: white;
-        @apply text-primary;
-        border: 1px solid theme('colors.primary.DEFAULT');
-    }
+  &:hover,
+  &:focus {
+    background: white;
+    @apply text-primary;
+    border: 1px solid theme('colors.primary.DEFAULT');
+  }
 }
 
 .button--secondary {
-    @apply bg-secondary;
-    color:white;
+  @apply bg-secondary;
+  color: white;
 }
 
 .button--outlined {
-    border: 1px solid;
-    background-color: transparent;
+  border: 1px solid;
+  background-color: transparent;
 
-    &.button--primary {
-        @apply border-primary text-primary;
-    }
+  &.button--primary {
+    @apply border-primary text-primary;
+  }
 }
