@@ -1,17 +1,45 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
-const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
-
-const path = require('path')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
+const { VueLoaderPlugin } = require('vue-loader');
+const path = require('path');
 
 // change these variables to fit your project
-const jsPath = './assets/js'
-const cssPath = './assets/sass'
-const outputPath = 'dist'
-const localDomain = 'http://mafeah.test'
+const jsPath = './assets/js';
+const cssPath = './assets/sass';
+const outputPath = 'dist';
+const localDomain = 'http://mafeah.test';
 
-module.exports = {
-	entry: [jsPath + '/main.js', cssPath + '/main.scss'],
+const manifestSharedSeed = {};
+
+// svelte config
+const svelteBuild = {
+	entry: { components: './assets/components/index.js' },
+	output: {
+		filename: 'components.[contenthash].js',
+		path: path.resolve(__dirname, outputPath),
+		publicPath: '',
+	},
+	module: {
+		rules: [
+			{
+				test: /\.vue$/,
+				loader: 'vue-loader',
+			},
+		],
+	},
+	plugins: [new WebpackManifestPlugin({ seed: manifestSharedSeed }), new VueLoaderPlugin()],
+	resolve: {
+		extensions: ['.ts', '.js', '.vue', '.json'],
+		alias: {
+			vue: 'vue/dist/vue.esm-bundler.js',
+		},
+	},
+};
+
+// default config
+const mainBuild = {
+	entry: { main: [jsPath + '/main.js', cssPath + '/main.scss'] },
 	output: {
 		filename: '[name].[contenthash].js',
 		path: path.resolve(__dirname, outputPath),
@@ -60,6 +88,8 @@ module.exports = {
 			},
 			{ reload: true },
 		),
-		new WebpackManifestPlugin(),
+		new WebpackManifestPlugin({ seed: manifestSharedSeed }),
 	],
-}
+};
+
+module.exports = [svelteBuild, mainBuild];
