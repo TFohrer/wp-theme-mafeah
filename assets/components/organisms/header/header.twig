@@ -1,1 +1,28 @@
-<header><h1>MY HEADER</h1></header>
+<header>
+	{% if menu %}
+		<nav class="main-navigation">
+			<ul>
+				{% for item in menu.items %}
+					<li>
+						<a href="{{ item.link }}" {{ item.is_target_blank ? 'target="_blank"' }}>
+							{{ item.title }}
+						</a>
+
+						{% if item.children %}
+							<ul>
+								{% for child in item.children %}
+									<li>
+										<a href="{{ child.link }}"
+											{{ item.is_target_blank ? 'target="_blank"' }}>
+											{{ child.title }}
+										</a>
+									</li>
+								{% endfor %}
+							</ul>
+						{% endif %}
+					</li>
+				{% endfor %}
+			</ul>
+		</nav>
+	{% endif %}
+</header>

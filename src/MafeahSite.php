@@ -162,9 +162,12 @@ class MafeahSite extends Site {
 	 * Load javascript files.
 	 */
 	public function load_javascript_files() {
-		$mainJsFileName = $this->manifestFile['main.js'];
+		$mainJSFileName = $this->manifestFile['main.js'];
+    $componentsJSFileName = $this->manifestFile['components.js'];
 
-    wp_register_script( 'main_js', get_stylesheet_directory_uri() . '/' . $this->distPath . '/' . $mainJsFileName, null, false, true );
+    wp_register_script( 'main_js', get_stylesheet_directory_uri() . '/' . $this->distPath . '/' . $mainJSFileName, null, false, true );
 		wp_enqueue_script( 'main_js' );
+    wp_register_script( 'components_js', get_stylesheet_directory_uri() . '/' . $this->distPath . '/' . $componentsJSFileName, null, false, true );
+		wp_enqueue_script( 'components_js' );
 	}
 }
