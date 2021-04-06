@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="{{ site.charset }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{{ site.description }}">
-    {{ function('wp_head') }}
-</head>
-<body>
-{% include 'partials/header.twig' %}
-  <h2>TEST</h2>
+	<head>
+		<meta charset="{{ site.charset }}" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="{{ site.description }}" />
+		{{ function('wp_head') }}
+	</head>
+	<body>
+		{% include 'partials/header.twig' %}
+		<h2>
+			TEST
+		</h2>
 
-<main id="main">
-  <h1>H1 TEST h1</h1>
-  <accordion></accordion>
-    {# {% block body %}{% endblock body %}#}
-</main>
+		<main id="main">
+			<h1>
+				H1 TEST h1
+			</h1>
+			<accordion></accordion>
+			{% block body %}
 
-{% include 'partials/footer.twig' %}
+			{% endblock %}#}
+		</main>
 
-{{ function('wp_footer') }}
-</body>
+		{% include 'partials/footer.twig' %}
+
+		{{ function('wp_footer') }}
+	</body>
 </html>

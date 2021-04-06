@@ -1,5 +1,6 @@
-<header>
+<header class="main-header">
 	{% if menu %}
+		<button class="mobile-nav-toggle js-toggle-mobile-nav">MOBILE NAV TOGGLE</button>
 		<nav class="main-navigation">
 			<ul>
 				{% for item in menu.items %}
@@ -25,4 +26,18 @@
 			</ul>
 		</nav>
 	{% endif %}
+
+	<img class="main-header__mobile-logo" src="https://via.placeholder.com/75" />
 </header>
+<script>
+const mobileNavToggle = document.querySelector('.js-toggle-mobile-nav');
+
+const mainNavigationContainer = document.querySelector('.main-navigation');
+
+mobileNavToggle.addEventListener('click', toggleMobileNavigation);
+
+function toggleMobileNavigation(){
+  this.classList.toggle('active');
+  mainNavigationContainer.classList.toggle('active');
+}
+</script
