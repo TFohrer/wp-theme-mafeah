@@ -5,3 +5,8 @@
 @import '_fonts.scss';
 
 @import '../components';
+
+// TODO remove once all styles are fixed
+html {
+	overflow-x: hidden;
+}

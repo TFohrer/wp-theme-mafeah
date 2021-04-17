@@ -9,4 +9,6 @@ const app = createApp({
 	},
 });
 
+app.config.isCustomElement = tag => tag.startsWith('rs-');
+
 app.mount('#main');
