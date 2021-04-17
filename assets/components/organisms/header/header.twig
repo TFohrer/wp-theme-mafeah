@@ -1,16 +1,23 @@
+{% apply spaceless %}
 <header class="main-header">
 	{% if menu %}
-		<button class="mobile-nav-toggle js-toggle-mobile-nav">MOBILE NAV TOGGLE</button>
+		<button class="mobile-nav-toggle js-toggle-mobile-nav">
+      <svg width="60" height="60" viewBox="0 0 100 100">
+        <path class="mobile-nav-toggle__line mobile-nav-toggle__line--top" d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
+        <path class="mobile-nav-toggle__line mobile-nav-toggle__line--center" d="M 20,50 H 80" />
+        <path class="mobile-nav-toggle__line mobile-nav-toggle__line--bottom" d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" />
+      </svg>
+    </button>
 		<nav class="main-navigation">
-			<ul>
-				{% for item in menu.items %}
-					<li>
+			<ul class="main-navigation__links">
+				{%- for item in menu.items -%}
+
+					<li class="main-navigation__link {{ item.classes|join('') }}">
 						<a href="{{ item.link }}" {{ item.is_target_blank ? 'target="_blank"' }}>
 							{{ item.title }}
 						</a>
-
-						{% if item.children %}
-							<ul>
+						{%- if item.children -%}
+							<ul class="main-navigation__sub-navigation">
 								{% for child in item.children %}
 									<li>
 										<a href="{{ child.link }}"
@@ -29,6 +36,7 @@
 
 	<img class="main-header__mobile-logo" src="https://via.placeholder.com/75" />
 </header>
+{% endapply %}
 <script>
 const mobileNavToggle = document.querySelector('.js-toggle-mobile-nav');
 

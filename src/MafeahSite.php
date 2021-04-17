@@ -46,6 +46,7 @@ class MafeahSite extends Site {
 
 		$this->add_actions();
 		$this->add_filters();
+    $this->remove_filters();
 
 		parent::__construct();
 	}
@@ -170,4 +171,8 @@ class MafeahSite extends Site {
     wp_register_script( 'components_js', get_stylesheet_directory_uri() . '/' . $this->distPath . '/' . $componentsJSFileName, null, false, true );
 		wp_enqueue_script( 'components_js' );
 	}
+
+  private function remove_filters() {
+    remove_filter( 'the_content', 'wpautop' );
+  }
 }
